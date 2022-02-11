@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
@@ -61,7 +60,7 @@ type RequestInterceptor struct {
 }
 
 func (t *RequestInterceptor) RoundTrip(r *http.Request) (*http.Response, error) {
-	requestBody, _ := ioutil.ReadAll(r.Body)
+	requestBody, _ := io.ReadAll(r.Body)
 	t.interceptedBody = string(requestBody)
 	var body bytes.Buffer
 	body.WriteString(`{"access_token": "foobar", "expires_in": 3600, "scope": "*", "token_type": "bearer"}`)
