@@ -16,12 +16,11 @@ import (
 	"time"
 
 	"github.com/google/go-querystring/query"
-	"golang.org/x/oauth2"
 )
 
 const (
-	libraryName    = "github.com/vartanbeno/go-reddit"
-	libraryVersion = "2.0.0"
+	libraryName    = "github.com/sethjones/go-reddit"
+	libraryVersion = "2.0.1"
 
 	defaultBaseURL         = "https://oauth.reddit.com"
 	defaultBaseURLReadonly = "https://reddit.com"
@@ -96,7 +95,7 @@ type Client struct {
 	Widget     *WidgetService
 	Wiki       *WikiService
 
-	oauth2Transport *oauth2.Transport
+	applicationOnlyOAuth bool
 
 	onRequestCompleted RequestCompletionCallback
 }
